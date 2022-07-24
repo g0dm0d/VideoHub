@@ -8,7 +8,11 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 class Database:
     def __init__(self): # WORKS
-        self.db = pymysql.connect(host="localhost", user="root", passwd="*********", db="video")
+        self.db = pymysql.connect(
+            host="127.0.0.1",
+            user="root",
+            passwd="6y51^HsXrNcx",
+            db="video")
         self.cur = self.db.cursor()
 
     def get_most_viewed(self): # WORKS
@@ -105,7 +109,7 @@ class Database:
         """
         try:
             view_count = 0
-            self.cur.execute("INSERT INTO videos VALUES(\"{}\", \"{}\", \"{}\", {}, NULL)".format(video_ID, title, username, view_count))
+            self.cur.execute("INSERT INTO videos VALUES(\"{}\", \"{}\", \"{}\", {}, CURRENT_TIMESTAMP)".format(video_ID, title, username, view_count))
             self.db.commit()
         except:
             self.db.rollback()

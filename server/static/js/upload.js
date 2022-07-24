@@ -13,6 +13,5 @@ $(document).ready(function(){
     }
     var res = filename.slice(0,-4);
     $('form p').text(filename);
-    document.getElementById("title").value = res;
   });
 });

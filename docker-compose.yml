@@ -1,0 +1,26 @@
+version: "1.0"
+services:
+  api:
+    build: ./server
+    container_name: videohub-api
+    ports:
+      - "8080:8080"
+    restart: always
+
+  client:
+    build: ./client
+    container_name: videohub-client
+    ports:
+      - "5000:5000"
+    restart: always
+
+  db:
+    image: mysql
+    restart: always
+    container_name: videohub-db
+    ports:
+      - "3306:3306"
+    volumes:
+      - "./database.sql:/docker-entrypoint-initdb.d/database.sql"
+    environment:
+      MYSQL_ROOT_PASSWORD: "6y51^HsXrNcx"
