@@ -5,3 +5,4 @@ PyMySQL==1.0.2
 requests==2.27.1
 Werkzeug==2.2.0
 opencv-python==4.5.5.64
+cryptography==37.0.4 

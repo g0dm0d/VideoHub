@@ -9,7 +9,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 class Database:
     def __init__(self): # WORKS
         self.db = pymysql.connect(
-            host="127.0.0.1",
+            host="db",
             user="root",
             passwd="6y51^HsXrNcx",
             db="video")

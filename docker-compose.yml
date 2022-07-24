@@ -5,11 +5,17 @@ services:
     container_name: videohub-api
     ports:
       - "8080:8080"
+    links:
+      - "db"
+    depends_on:
+      - db
     restart: always
 
   client:
     build: ./client
     container_name: videohub-client
+    depends_on:
+      - api
     ports:
       - "5000:5000"
     restart: always
