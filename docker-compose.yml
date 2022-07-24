@@ -10,15 +10,22 @@ services:
     depends_on:
       - db
     restart: always
+    networks: 
+     - network-backend
 
   client:
     build: ./client
     container_name: videohub-client
+    links:
+      - "api"
     depends_on:
       - api
     ports:
       - "5000:5000"
     restart: always
+    networks: 
+     - network-backend
+
 
   db:
     image: mysql
@@ -30,3 +37,8 @@ services:
       - "./database.sql:/docker-entrypoint-initdb.d/database.sql"
     environment:
       MYSQL_ROOT_PASSWORD: "6y51^HsXrNcx"
+    networks: 
+     - network-backend
+
+networks:
+  network-backend:
